@@ -1,0 +1,39 @@
+13 de noviembre de 2018 15:15:02 CLST[main] com.ibm.msg.client.wmq.internal.WMQConnection
+Se ha hecho caso omiso de la excepción ya que no hay ningún escucha de excepciones registrado: '
+                       Mensaje : com.ibm.msg.client.jms.DetailedIllegalStateException: JMSWMQ1107: Ha surgido un problema con esta conexión.
+Se ha producido un error con la conexión JMS de IBM MQ.
+Utilice la excepción enlazada para determinar la causa de este error.
+                         Clase : class com.ibm.msg.client.jms.DetailedIllegalStateException
+                          Pila : com.ibm.msg.client.wmq.common.internal.Reason.reasonToException(Reason.java:489)
+                               : com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:215)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageConsumer.checkJmqiCallSuccess(WMQMessageConsumer.java:217)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageConsumer.checkJmqiCallSuccess(WMQMessageConsumer.java:156)
+                               : com.ibm.msg.client.wmq.internal.WMQConsumerShadow.getMsg(WMQConsumerShadow.java:1861)
+                               : com.ibm.msg.client.wmq.internal.WMQSyncConsumerShadow.receiveInternal(WMQSyncConsumerShadow.java:230)
+                               : com.ibm.msg.client.wmq.internal.WMQConsumerShadow.receive(WMQConsumerShadow.java:1466)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageConsumer.receive(WMQMessageConsumer.java:674)
+                               : com.ibm.msg.client.jms.internal.JmsMessageConsumerImpl.receiveInboundMessage(JmsMessageConsumerImpl.java:1073)
+                               : com.ibm.msg.client.jms.internal.JmsMessageConsumerImpl.receive(JmsMessageConsumerImpl.java:691)
+                               : com.ibm.mq.jms.MQMessageConsumer.receive(MQMessageConsumer.java:209)
+                               : com.example.demo.DemoApplication.main(DemoApplication.java:69)
+     Se debe a [1] --> Mensaje : com.ibm.mq.MQException: JMSCMQ0001: La llamada de IBM MQ ha fallado con código de terminación '2' ('MQCC_FAILED') razón '2162' ('MQRC_Q_MGR_STOPPING').
+                         Clase : class com.ibm.mq.MQException
+                          Pila : com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:203)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageConsumer.checkJmqiCallSuccess(WMQMessageConsumer.java:217)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageConsumer.checkJmqiCallSuccess(WMQMessageConsumer.java:156)
+                               : com.ibm.msg.client.wmq.internal.WMQConsumerShadow.getMsg(WMQConsumerShadow.java:1861)
+                               : com.ibm.msg.client.wmq.internal.WMQSyncConsumerShadow.receiveInternal(WMQSyncConsumerShadow.java:230)
+                               : com.ibm.msg.client.wmq.internal.WMQConsumerShadow.receive(WMQConsumerShadow.java:1466)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageConsumer.receive(WMQMessageConsumer.java:674)
+                               : com.ibm.msg.client.jms.internal.JmsMessageConsumerImpl.receiveInboundMessage(JmsMessageConsumerImpl.java:1073)
+                               : com.ibm.msg.client.jms.internal.JmsMessageConsumerImpl.receive(JmsMessageConsumerImpl.java:691)
+                               : com.ibm.mq.jms.MQMessageConsumer.receive(MQMessageConsumer.java:209)
+                               : com.example.demo.DemoApplication.main(DemoApplication.java:69)
+'.
+
+EXPLICACIÓN:
+Se ha intentado enviar una excepción al escucha de excepciones de la conexión pero no se había registrado un escucha.
+
+ACCIÓN:
+Debe registrarse un escucha de excepciones con la conexión para recibir sus excepciones.
+--------------------------------------------------------------------
