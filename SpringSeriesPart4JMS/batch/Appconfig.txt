@@ -1,0 +1,20 @@
+
+************************************************************************
+* Setup the queues required by the Application *
+************************************************************************
+
+
+ALTER QMGR DEADQ(SYSTEM.DEAD.LETTER.QUEUE)
+
+* Request Queue: 
+    DEFINE QLOCAL('RequestResponseQueue') REPLACE +
+           USAGE(normal) +
+           DESCR('Queue For Request Response')
+
+
+
+
+********************************************************************/
+
+
+

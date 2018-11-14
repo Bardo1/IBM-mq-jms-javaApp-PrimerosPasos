@@ -1,0 +1,5 @@
+def qcf(MQ_JMS_MANAGER) qmgr(MQJMS.QManager) 
+press Enter
+
+def q(JMS_RequestResponseQueue) qmgr(MQJMS.QManager) queue(RequestResponseQueue) 
+press Enter
